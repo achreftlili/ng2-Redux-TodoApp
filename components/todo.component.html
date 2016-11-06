@@ -1,0 +1,23 @@
+
+<section class="todoapp">
+			<header class="header">
+				<h1>todos</h1>
+				<input class="new-todo" #inputTodo placeholder="What needs to be done?" [(ngModel)]="todoInput" (keyup.enter)="addTodo(inputTodo)">
+			</header>
+			<section class="main" *ngIf="(todos$ | async).length > 0">
+					<ul class="todo-list">
+						<li *ngFor="let todo of todos$ | async"  [class.completed]="todo.completed" [class.editing]="todo.editing" >
+							<div class="view">
+								<input class="toggle" type="checkbox" (click)="toggleCompletion(todo)" [checked]="todo.completed">
+								<label (dblclick)="toggleEditTodo(todo)">{{todo.title}}</label>
+								<button class="destroy" (click)="deleteTodo(todo)"></button>
+							</div>
+							<input class="edit" *ngIf="todo.editing" [value]="todo.title" #editedtodo (blur)="stopEditing(todo, editedtodo.value)" (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" (keyup.escape)="toggleEditTodo(todo)">
+						</li>
+					</ul>
+			</section>
+			<footer class="footer" *ngIf="(todos$ | async).length  > 0">
+				<span class="todo-count"><strong>{{(todos$ | async).length}}</strong> {{(todos$ | async).length == 1 ? 'item' : 'items'}} left</span>
+				<button class="clear-completed" *ngIf="(completedTodos$ | async).length > 0" (click)="deleteCompletedTodos()">Clear completed</button>
+			</footer>
+</section>
