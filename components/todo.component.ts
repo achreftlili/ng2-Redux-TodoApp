@@ -23,6 +23,9 @@ export class TodoComponent implements OnInit{
   constructor(public todoActions: TodoActions,private ngRedux: NgRedux<IAppState>) {}
 
   private addTodo(inputTodo) {
+    if (inputTodo.value.length === 0) {
+        return ;
+    }
      this.todoActions.addTodo(inputTodo.value);
      this.todoInput = '';
   }
