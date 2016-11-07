@@ -8,8 +8,7 @@
     "postinstall": "npm run build",
     "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000  --content-base src",
     "dev": "webpack-dev-server -d --inline --progress --no-info --config webpack.dev.config.js --host 127.0.0.1",
-    "start": "npm run server",
-
+    "start": "npm run server"
   },
   "repository": {
     "type": "git",
