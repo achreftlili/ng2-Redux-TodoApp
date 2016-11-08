@@ -1,9 +1,7 @@
-
-
 import { Component, Inject,OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { NgRedux, DevToolsExtension, select } from 'ng2-redux';
+import { NgRedux, select } from 'ng2-redux';
 import { rootReducer, enhancers } from '../store/index';
 import { TodoActions } from '../actions/todo.actions';
 import { Todo } from '../models/Todo';
@@ -15,7 +13,7 @@ import { IAppState } from '../store';
   providers: [ TodoActions ],
   styleUrls: ['./components/todo.component.css']
 })
-export class TodoComponent implements OnInit{
+export class TodoComponent {
   todoInput:String = '';
   @select('todos') todos$: Observable<Object>;
   completedTodos$ = this.ngRedux.select(state=>state.todos.filter(n=>n.completed===true))
@@ -54,7 +52,5 @@ export class TodoComponent implements OnInit{
 			return ;
 		}
     this.todoActions.editTodo(todo.id,editedTitle);
-  }
-  ngOnInit() {
   }
 }

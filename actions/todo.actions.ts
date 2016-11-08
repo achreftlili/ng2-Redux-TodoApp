@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Todo } from '../models/Todo';
 
 @Injectable()
 export class TodoActions {
-  constructor (
-    private ngRedux: NgRedux<IAppState>) {}
+  constructor (private ngRedux: NgRedux<IAppState>) {}
 
   static ADD_TODO: string = 'ADD_TODO';
   static DELETE_TODO: string = 'DELETE_TODO';
@@ -30,7 +28,6 @@ export class TodoActions {
     this.ngRedux.dispatch({ type: TodoActions.DELETE_COMPLETED_TODOS });
   }
 }
-
 
 export interface ITodoAction {
   type: string;
