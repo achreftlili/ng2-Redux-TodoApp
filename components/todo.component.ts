@@ -1,4 +1,4 @@
-import { Component, Inject,OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from 'ng2-redux';
